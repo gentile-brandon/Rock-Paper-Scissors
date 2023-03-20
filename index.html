@@ -15,8 +15,27 @@
      } 
      console.log(getComputerChoice());
 
-
-
+     function round(player, computer) {
+        if (player === computer) {
+            return "Tie Game!"
+        } else if (player === "rock" && computer === "scissors") {
+            return "Victory!"
+        } else if (player === "rock" && computer === "paper") {
+            return "You lose!"
+        } else if (player === "paper" && computer === "rock") {
+            return "Victory!"
+        } else if (player === "paper" && computer === "scissors") {
+            return "You lose!"
+        } else if (player === "scissors" && computer === "rock") {
+            return "You lose!"
+        } else if (player === "scissors" && computer === "paper") {
+            return "Victory!"
+        }
+     }
+        let computer = getComputerChoice();
+        let player = ""
+        player = player.toLowerCase;
+        console.log(round(player, computer));
     </script>
     
 </body>
