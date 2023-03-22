@@ -59,9 +59,9 @@ function game() {
     const computer = getComputerChoice();
     const result = round(player, computer); //Can call function while assigning to variable
     if (result === "Victory!") {
-      score[0] = score[0]++;
+      score[0] = score[0] + 1;
     } else if (result === "You lose!") {
-      score[1] = score[1]++;
+      score[1] = score[1] + 1;
     }
     console.log(`
     ${result}
