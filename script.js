@@ -5,8 +5,8 @@ function getComputerChoice() {
 }
 // Function to play a single round against computer
 function round(player, computer) {
+  console.log(player);
   const playerInput = player.charAt(0).toLowerCase();
-  console.log(playerInput, computer);
   //   if (test === computer) {
   //     return "Tie Game!";
   //   } else if (test === "rock" && computer === "scissors") {
@@ -51,6 +51,7 @@ function compareScore(score) {
     return "It's a tie!";
   }
 }
+/*
 // function to play whole game
 function game() {
   const score = [0, 0];
@@ -71,3 +72,14 @@ function game() {
   console.log(compareScore(score)); //Call function inside console.log
 }
 game();
+*/
+const gameButtons = document.querySelectorAll("button");
+gameButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const player = e.target.innerText;
+    const computer = getComputerChoice();
+    const result = round(player, computer);
+    const div = document.querySelector("#results");
+    div.textContent = result;
+  });
+});
