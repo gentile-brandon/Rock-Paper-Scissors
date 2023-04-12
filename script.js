@@ -76,7 +76,7 @@ game();
 const gameButtons = document.querySelectorAll("button");
 gameButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
-    const player = e.target.innerText;
+    const player = e.currentTarget.dataset.type;
     const computer = getComputerChoice();
     const result = round(player, computer);
     const div = document.querySelector("#results");
