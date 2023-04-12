@@ -31,19 +31,32 @@ function round(player, computer) {
   }
 }
 
+/**
+ * turns of buttons after score reaches 5
+ * @function disableButtons
+ */
 function disableButtons() {
   gameButtons.forEach((button) => {
     button.disabled = true;
   });
 }
-// Function to compare the final score of the game
-function compareScore() {
+
+/**
+ * Function to compare the final score of the game
+ * @param {string} result String determined from round function
+ * @returns string containing result of game
+ */
+function compareScore(result) {
   if (score[0] === 5) {
     disableButtons();
     return "Congratulations!";
   } else if (score[1] === 5) {
     disableButtons();
     return "Better luck next time!";
+  } else {
+    return `${result}
+    The current score is ${score[0]} to ${score[1]}.
+    `;
   }
 }
 
@@ -54,11 +67,6 @@ gameButtons.forEach((button) => {
     const result = round(player, computer);
 
     const div = document.querySelector("#results");
-    div.textContent = `
-    ${result}
-    The current score is ${score[0]} to ${score[1]}.
-    `;
-
-    compareScore();
+    div.textContent = compareScore(result);
   });
 });
