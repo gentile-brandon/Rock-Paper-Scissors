@@ -1,3 +1,6 @@
+const score = [0, 0];
+const gameButtons = document.querySelectorAll("button");
+
 //Function to select Computer's Choice
 function getComputerChoice() {
   const computerChoice = ["r", "p", "s"];
@@ -7,23 +10,7 @@ function getComputerChoice() {
 function round(player, computer) {
   console.log(player);
   const playerInput = player.charAt(0).toLowerCase();
-  //   if (test === computer) {
-  //     return "Tie Game!";
-  //   } else if (test === "rock" && computer === "scissors") {
-  //     return "Victory!";
-  //   } else if (test === "rock" && computer === "paper") {
-  //     return "You lose!";
-  //   } else if (test === "paper" && computer === "rock") {
-  //     return "Victory!";
-  //   } else if (test === "paper" && computer === "scissors") {
-  //     return "You lose!";
-  //   } else if (test === "scissors" && computer === "rock") {
-  //     return "You lose!";
-  //   } else if (test === "scissors" && computer === "paper") {
-  //     return "Victory!";
-  //   }
 
-  // if else written as switch statement
   switch (playerInput + computer) {
     case "rr":
     case "pp":
@@ -32,54 +19,46 @@ function round(player, computer) {
     case "rs":
     case "pr":
     case "sp":
+      score[0] += 1;
       return "Victory!";
     case "rp":
     case "ps":
     case "sr":
+      score[1] += 1;
       return "You lose!";
     default:
       return "Invalid";
   }
 }
+
+function disableButtons() {
+  gameButtons.forEach((button) => {
+    button.disabled = true;
+  });
+}
 // Function to compare the final score of the game
-function compareScore(score) {
-  if (score[0] > score[1]) {
+function compareScore() {
+  if (score[0] === 5) {
+    disableButtons();
     return "Congratulations!";
-  } else if (score[0] < score[1]) {
+  } else if (score[1] === 5) {
+    disableButtons();
     return "Better luck next time!";
-  } else {
-    return "It's a tie!";
   }
 }
-/*
-// function to play whole game
-function game() {
-  const score = [0, 0];
-  for (let i = 0; i < 5; i++) {
-    const player = prompt("Rock, paper, or scissors?");
-    const computer = getComputerChoice();
-    const result = round(player, computer); //Can call function while assigning to variable
-    if (result === "Victory!") {
-      score[0] = score[0] + 1;
-    } else if (result === "You lose!") {
-      score[1] = score[1] + 1;
-    }
-    console.log(`
-    ${result}
-    The current score is ${score[0]} to ${score[1]}.
-    `);
-  }
-  console.log(compareScore(score)); //Call function inside console.log
-}
-game();
-*/
-const gameButtons = document.querySelectorAll("button");
+
 gameButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const player = e.currentTarget.dataset.type;
     const computer = getComputerChoice();
     const result = round(player, computer);
+
     const div = document.querySelector("#results");
-    div.textContent = result;
+    div.textContent = `
+    ${result}
+    The current score is ${score[0]} to ${score[1]}.
+    `;
+
+    compareScore();
   });
 });
