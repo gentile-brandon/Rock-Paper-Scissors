@@ -49,10 +49,10 @@ function disableButtons() {
 function compareScore(result) {
   if (score[0] === 5) {
     disableButtons();
-    return "Congratulations!";
+    return "The force is strong with you! Refresh the page to play again!";
   } else if (score[1] === 5) {
     disableButtons();
-    return "Better luck next time!";
+    return "Do or do not! There is no try! Refresh the page to play again!";
   } else {
     return `${result}
     The current score is ${score[0]} to ${score[1]}.
