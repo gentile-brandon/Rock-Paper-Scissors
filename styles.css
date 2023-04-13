@@ -3,6 +3,9 @@ body {
     font-family: 'Star Wars', sans-serif;
     font-size: small;
 }
+button {
+    margin-top: 8vh;
+}
 img {
     width: 150px;
     height: 200px;
@@ -12,6 +15,7 @@ img {
     color: yellow;
     display: flex;
     justify-content: center;
+    margin-top: 4vh;
 }
 .header {
     color: yellow;
