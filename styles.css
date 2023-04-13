@@ -1,0 +1,11 @@
+body {
+    background-image: url(https://lumiere-a.akamaihd.net/v1/images/star-wars-backgrounds-14_856985d9.jpeg);
+}
+img {
+    width: 150px;
+    height: 200px;
+    border-radius: 25px;
+}
+#results {
+    color: white;
+}
